@@ -5,18 +5,98 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About</title>
   <link href="css/styles.css" rel="stylesheet" />
+  <style>
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #121212;
+      color: #f1f1f1;
+    }
+
+    body.dark-mode .bg-light {
+      background-color: #1e1e1e !important;
+    }
+
+    body.dark-mode .border-bottom {
+      border-bottom: 1px solid #444 !important;
+    }
+
+    body.dark-mode .list-group-item {
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+      border-color: #444;
+    }
+
+    body.dark-mode .list-group-item:hover {
+      background-color: #2c2c2c;
+    }
+  </style>
 </head>
 <body>
-  <div class="container mt-4">
-    <h1>About</h1>
-    <p>This is a test version of the About page. Here you can write information about yourself, your project, or your website's purpose.</p>
+  <div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div class="border-end bg-white" id="sidebar-wrapper">
+      <div class="sidebar-heading border-bottom bg-light">Menu</div>
+      <div class="list-group list-group-flush">
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="index.html">Dashboard</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="gallery.html">Gallery</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3 active" href="about.html">About</a>
+      </div>
+    </div>
 
-    <h2 class="mt-4">Contact</h2>
-    <p>If you'd like to get in touch, feel free to send an email to:  
-      <a href="mailto:youremail@example.com">youremail@example.com</a>
-    </p>
+    <!-- Page content wrapper -->
+    <div id="page-content-wrapper">
+      <!-- Top navigation -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <div class="container-fluid">
+          <!-- Sidebar toggle -->
+          <button class="navbar-toggler" type="button" id="sidebarToggle" aria-label="Toggle sidebar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-    <a href="index.html" class="btn btn-primary mt-3">Back to Home</a>
+          <!-- Dark mode toggle -->
+          <div class="ms-auto d-flex align-items-center">
+            <button id="themeToggle" class="btn btn-outline-secondary" aria-label="Toggle dark mode">🌙</button>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Page content -->
+      <div class="container mt-4">
+        <h1>About</h1>
+        <p>This is a test version of the About page. Here you can write information about yourself, your project, or your website's purpose.</p>
+
+        <h2 class="mt-4">Contact</h2>
+        <p>If you'd like to get in touch, feel free to send an email to:  
+          <a href="mailto:youremail@example.com">youremail@example.com</a>
+        </p>
+
+        <a href="index.html" class="btn btn-primary mt-3">Back to Home</a>
+      </div>
+    </div>
   </div>
+
+  <!-- Bootstrap core JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS -->
+  <script src="js/scripts.js"></script>
+
+  <!-- Dark mode toggle JS -->
+  <script>
+    const toggleBtn = document.getElementById('themeToggle');
+
+    // Load saved preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+      if (toggleBtn) toggleBtn.textContent = '☀️';
+    }
+
+    // Toggle dark mode on button click
+    toggleBtn?.addEventListener('click', () => {
+      const isDark = document.body.classList.toggle('dark-mode');
+      toggleBtn.textContent = isDark ? '☀️' : '🌙';
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  </script>
 </body>
 </html>
