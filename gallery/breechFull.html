@@ -78,19 +78,22 @@
   <!-- Page Content -->
   <div id="page-content-wrapper">
     <nav class="navbar navbar-light bg-light border-bottom">
-      <div class="container-fluid d-flex justify-content-between align-items-center">
+      <div class="container-fluid d-flex align-items-center">
         <button class="navbar-toggler" type="button" id="sidebarToggle" aria-label="Toggle sidebar">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <!-- Dark mode toggle button -->
-        <button id="themeToggle" class="btn btn-outline-secondary" aria-label="Toggle dark mode">🌙</button>
+
+        <!-- Dark mode toggle -->
+        <div class="ms-auto">
+          <button id="themeToggle" class="btn btn-outline-secondary" aria-label="Toggle dark mode">🌙</button>
+        </div>
       </div>
     </nav>
 
     <div class="container mt-4 text-center">
       <h1>Full Length Breech</h1>
       <!-- README section -->
-      <div class="mt-4 text-start" id="readme-container">
+      <div class="mt-4 text-center" id="readme-container">
         <div id="readme-content" class="readme-text"></div>
       </div>
           
@@ -108,7 +111,7 @@
 <script>
   const toggleBtn = document.getElementById('themeToggle');
 
-  // Load saved theme preference
+  // Load saved preference
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'dark') {
     document.body.classList.add('dark-mode');
